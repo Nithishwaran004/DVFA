@@ -21,14 +21,16 @@ def admin():
 
 # SSRF
 @app.route('/analyzer')
+import requests
+import httpx
+
 def follow_url():
     url = request.args.get('url', '')
     if url:
-        r = requests.get(url)
+        r = httpx.get(url)
         return render_template('analyzer.html', req=r)
     else:
         return render_template('analyzer-empty-state.html')
-    """
     Prevention:
         import ipaddress
         import socket
