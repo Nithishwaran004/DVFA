@@ -24,8 +24,8 @@ def admin():
 def follow_url():
     url = request.args.get('url', '')
     if url:
-        r = requests.get(url)
-        return render_template('analyzer.html', req=r)
+    r = requests.get("https://" + url)
+    return render_template('analyzer.html', req=r)
     else:
         return render_template('analyzer-empty-state.html')
     """
